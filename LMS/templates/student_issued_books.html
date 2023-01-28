@@ -1,0 +1,38 @@
+{% extends 'student_navbar.html' %}
+{% load static %}
+{% block title %} All Students List {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center"><u>All Issued Books</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr class="text-center">
+                <th>Sr.No</th>
+<!--                <th>Student ID</th>-->
+                <th>Student Name</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Issued Date</th>
+                <th>Expiry Date</th>
+                <th>Fine</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student_issued_book in list_of_issue_book %}
+            <tr class="text-center">
+                <td>{{forloop.counter}}.</td>
+<!--                <td>{{student_issued_book.student.id}}</td>-->
+                <td>{{student_issued_book.student}}</td>
+                <td>{{student_issued_book.book}}</td>
+                <td>{{student_issued_book.auther}}</td>
+                <td>{{student_issued_book.issue_date}}</td>
+                <td>{{student_issued_book.expiry_date}}</td>
+                <td>$ {{student_issued_book.fine}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

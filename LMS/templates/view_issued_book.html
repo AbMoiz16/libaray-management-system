@@ -1,0 +1,40 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} All Students List {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center"><u>All Issued Books</u></h1>
+    <table class="table table-hover">
+        <thead>
+            <tr class="text-center">
+                <th>Sr.No</th>
+                <th>Student ID</th>
+                <th>Student</th>
+                <th>Book Name</th>
+                <th>Auther</th>
+                <th>Issued Date</th>
+                <th>Expiry Date</th>
+                <th>Fine</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for issued_book_obj in details %}
+            <tr class="text-center">
+                <td>{{forloop.counter}}.</td>
+                <td>{{issued_book_obj.student_id}}</td>
+                <td>{{issued_book_obj.student}}</td>
+                <td>{{issued_book_obj.name}}</td>
+                <td>{{issued_book_obj.auther}}</td>
+                <td>{{issued_book_obj.issue_date}}</td>
+                <td>{{issued_book_obj.expiry_date}}</td>
+                <td>${{issued_book_obj.fine}}</td>
+                <td><a href="/delete_view_issued_book/{{issued_book_obj.id}}/" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

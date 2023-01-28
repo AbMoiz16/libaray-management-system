@@ -1,0 +1,34 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<!--{{ approve_book }}-->
+<div class="container mt-4">
+    <h1 class="text-center"><u>Approve Book List</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr class="text-center">
+                <th>Sr.No</th>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Book Name</th>
+                <th>Approve Request</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in approve_book %}
+            <tr class="text-center">
+                <td>{{forloop.counter}}.</td>
+                <td>{{i.id}}</td>
+                <td>{{i.student}}</td>
+                <td>{{i.book}}</td>
+<!--                <td><a href="/delete_book/{{book.id}}/" class="btn btn-success">Issue a book</a></td>-->
+                <td><a href="/issued_book_request/{{i.id}}" class="btn btn-success">Issue a book</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
